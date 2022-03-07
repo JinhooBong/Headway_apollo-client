@@ -51,9 +51,10 @@ function URL_Form() {
   }
 
   function handleSubmit(e) {
+    e.preventDefault();
     console.log("url", url);
     console.log("slug", slug);
-    addLink({ variables: { url } })
+    addLink()
       .then((res) => console.log(res))
       .catch((err) => console.log("error", err));
   }
@@ -61,23 +62,25 @@ function URL_Form() {
   return (
     <Container>
       <StyledBar>
-        <StyledTextField
-          style={{ backgroundColor: "white" }}
-          id="outlined-basic"
-          label="Make your links shorter"
-          variant="outlined"
-          onChange={(e) => handleURLInput(e)}
-        />
-        <StyledTextField
-          style={{ backgroundColor: "white" }}
-          id="outlined-basic"
-          label="Custom slug"
-          variant="outlined"
-          onChange={(e) => handleSlugInput(e)}
-        />
-        <StyledButton variant="contained" onClick={(e) => handleSubmit(e)}>
-          Shorten URL
-        </StyledButton>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <StyledTextField
+            style={{ backgroundColor: "white" }}
+            id="outlined-basic"
+            label="Make your links shorter"
+            variant="outlined"
+            onChange={(e) => handleURLInput(e)}
+          />
+          <StyledTextField
+            style={{ backgroundColor: "white" }}
+            id="outlined-basic"
+            label="Custom slug"
+            variant="outlined"
+            onChange={(e) => handleSlugInput(e)}
+          />
+          <StyledButton variant="contained" type="submit">
+            Shorten URL
+          </StyledButton>
+        </form>
       </StyledBar>
     </Container>
   );
