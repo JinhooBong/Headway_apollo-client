@@ -1,10 +1,13 @@
 import NavBar from "./components/NavBar";
+import Hero from "./components/Hero";
+import URL_Form from "./components/URL_Form";
 
 function App() {
   return (
-    <div className="container mx-auto">
+    <div>
       <NavBar />
-      <h2 className="text-center">Hello</h2>
+      <Hero />
+      <URL_Form />
     </div>
   );
 }
