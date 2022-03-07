@@ -1,4 +1,10 @@
 import { useQuery, gql } from "@apollo/client";
+import styled from "styled-components";
+import { Container } from "@material-ui/core";
+
+const StyledContainer = styled(Container)`
+  text-align: center;
+`;
 
 function Links() {
   const { loading, error, data } = useQuery(gql`
@@ -14,11 +20,11 @@ function Links() {
   if (error) return <p>Error :(</p>;
 
   return data.allLinks.map(({ url, slug }) => (
-    <div>
+    <StyledContainer>
       <p>
-        {url} : {slug}
+        {url} --> {slug}
       </p>
-    </div>
+    </StyledContainer>
   ));
 }
 
