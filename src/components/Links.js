@@ -6,15 +6,17 @@ const StyledContainer = styled(Container)`
   text-align: center;
 `;
 
-function Links() {
-  const { loading, error, data } = useQuery(gql`
-    {
-      allLinks {
-        url
-        slug
-      }
+const getAllLinks = gql`
+  {
+    allLinks {
+      url
+      slug
     }
-  `);
+  }
+`;
+
+function Links() {
+  const { loading, error, data } = useQuery(getAllLinks);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;

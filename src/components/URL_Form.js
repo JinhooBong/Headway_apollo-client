@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { Container, Box, TextField, Button } from "@material-ui/core";
+import {
+  Container,
+  Box,
+  TextField,
+  Button,
+  Input,
+  ownerDocument
+} from "@material-ui/core";
 import styled from "styled-components";
 import { useMutation, gql } from "@apollo/client";
 
@@ -9,14 +16,17 @@ const StyledBar = styled(Box)`
   text-align: center;
 `;
 
-const StyledTextField = styled(TextField)`
+const StyledInput = styled(Input)`
   background-color: white;
-  height: 50px;
-  margin: 0 1%;
+  height: 50px !important;
+  line-height: 100% !important;
+  margin: 0 1% !important;
+  padding: 0 25px;
 `;
 
 const StyledButton = styled(Button)`
-  background-color: #90caf9;
+  background-color: #2381c2 !important;
+  color: white !important;
   height: 50px;
 `;
 
@@ -55,26 +65,20 @@ function URL_Form() {
     // console.log("url", url);
     // console.log("slug", slug);
     addLink()
-      .then((res) => console.log(res))
+      .then((res) => document.location.reload(true))
       .catch((err) => console.log("error", err));
   }
 
   return (
-    <Container>
+    <Container style={{ backgroundColor: "#0a192a" }}>
       <StyledBar>
         <form onSubmit={(e) => handleSubmit(e)}>
-          <StyledTextField
-            style={{ backgroundColor: "white" }}
-            id="outlined-basic"
-            label="Make your links shorter"
-            variant="outlined"
+          <StyledInput
+            placeholder="Create Shorter Links"
             onChange={(e) => handleURLInput(e)}
           />
-          <StyledTextField
-            style={{ backgroundColor: "white" }}
-            id="outlined-basic"
-            label="Custom slug"
-            variant="outlined"
+          <StyledInput
+            placeholder="Custom Slug"
             onChange={(e) => handleSlugInput(e)}
           />
           <StyledButton variant="contained" type="submit">

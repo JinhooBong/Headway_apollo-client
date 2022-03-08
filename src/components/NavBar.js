@@ -1,31 +1,24 @@
 import logo from "../../public/assets/headway_pic1.png";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import { IconButton } from "@material-ui/core";
+import { AppBar, Toolbar, IconButton } from "@material-ui/core";
+import styled from "styled-components";
+
+const StyledAppBar = styled(AppBar)`
+  box-shadow: 0px;
+  background-color: white;
+`;
 
 function NavBar() {
   return (
-    <AppBar color="transparent" position="static">
+    <StyledAppBar
+      style={{ background: "transparent", boxShadow: "none" }}
+      position="static"
+    >
       <Toolbar>
         <IconButton>
-          <img src={logo} />
+          <img src={logo} alt={"Logo"} />
         </IconButton>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
-        >
-          Features
-        </Typography>
-        <Typography
-          variant="h6"
-          sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
-        >
-          Pricing
-        </Typography>
       </Toolbar>
-    </AppBar>
+    </StyledAppBar>
   );
 }
 
