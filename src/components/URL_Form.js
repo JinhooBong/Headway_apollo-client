@@ -52,8 +52,8 @@ function URL_Form() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("url", url);
-    console.log("slug", slug);
+    // console.log("url", url);
+    // console.log("slug", slug);
     addLink()
       .then((res) => console.log(res))
       .catch((err) => console.log("error", err));

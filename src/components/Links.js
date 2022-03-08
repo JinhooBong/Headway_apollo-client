@@ -22,7 +22,8 @@ function Links() {
   return data.allLinks.map(({ url, slug }) => (
     <StyledContainer>
       <p>
-        {url} --> {slug}
+        {url} --> {window.location.href}
+        {slug}
       </p>
     </StyledContainer>
   ));
