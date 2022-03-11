@@ -39,6 +39,15 @@ const ADD_LINK = gql`
   }
 `;
 
+const GET_ALL_LINKS = gql`
+  query allLinks {
+    allLinks {
+      url
+      slug
+    }
+  }
+`;
+
 function URL_Form() {
   const [url, setUrl] = useState("");
   const [slug, setSlug] = useState("");
@@ -47,7 +56,8 @@ function URL_Form() {
     variables: {
       url: url,
       slug: slug
-    }
+    },
+    refetchQueries: [{ query: GET_ALL_LINKS }, "GetLinks"]
   });
 
   function handleURLInput(e) {
@@ -65,8 +75,15 @@ function URL_Form() {
     // console.log("url", url);
     // console.log("slug", slug);
     addLink()
-      .then((res) => document.location.reload(true))
-      .catch((err) => console.log("error", err));
+      .then((res) => {
+        console.log(res);
+        console.log("it does log");
+      })
+      .catch((err) => {
+        console.log("error", url);
+        console.log("err", slug);
+        console.log("err", err);
+      });
   }
 
   return (
